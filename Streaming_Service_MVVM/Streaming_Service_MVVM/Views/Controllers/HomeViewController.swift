@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
         let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
         homeFeedTable.tableHeaderView = headerView
 
-        getTrendingMovies()
+        fetchData()
     }
 
     private func configureNavbar() {
@@ -53,15 +53,19 @@ class HomeViewController: UIViewController {
         homeFeedTable.frame = view.bounds
     }
 
-    private func getTrendingMovies() {
-        APICaller.shared.getTrendingMovies { results in
-            switch results {
+    private func fetchData() {
+//        APICaller.shared.getTrendingMovies { results in
+//            switch results {
+//
+//            case .success(let movies):
+//                print(movies)
+//            case.failure(let error):
+//                print(error)
+//            }
+//        }
 
-            case .success(let movies):
-                print(movies)
-            case.failure(let error):
-                print(error)
-            }
+        APICaller.shared.getPopular { results in
+            //
         }
     }
 
@@ -91,7 +95,8 @@ extension HomeViewController: UITableViewDelegate {
         header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
         header.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
         header.textLabel?.textColor = .white
-        header.textLabel?.text = header.textLabel?.text?.lowercased()
+        header.textLabel?.text = header.textLabel?.text?.capitalized
+        
     }
 }
 
