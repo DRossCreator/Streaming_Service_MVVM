@@ -68,11 +68,11 @@ class HeroHeaderUIView: UIView {
     }
 
     private func setupLayout() {
-        playButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
+        playButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60).isActive = true
         playButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
         playButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
 
-        downloadButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+        downloadButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60).isActive = true
         downloadButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
         downloadButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
     }
