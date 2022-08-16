@@ -29,6 +29,14 @@ class HeroHeaderUIView: UIView {
         return button
     }()
 
+    private lazy var buttonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+
     private lazy var downloadButton: UIButton = {
         let button = UIButton()
         button.setTitle("Download", for: .normal)
@@ -39,23 +47,31 @@ class HeroHeaderUIView: UIView {
         return button
     }()
 
+    //MARK: - Initialization
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(heroImageView)
         addGradient()
-        addSubview(playButton)
-        addSubview(downloadButton)
+        addSubview(buttonsStackView)
+        buttonsStackView.addArrangedSubview(playButton)
+        buttonsStackView.addArrangedSubview(downloadButton)
         setupLayout()
     }
+
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+
+    //MARK: - Override functions
 
     override func layoutSubviews() {
         super.layoutSubviews()
         heroImageView.frame = bounds
     }
 
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
+    //MARK: - Private functions
 
     private func addGradient() {
         let gradientLayer = CAGradientLayer()
@@ -68,13 +84,12 @@ class HeroHeaderUIView: UIView {
     }
 
     private func setupLayout() {
-        playButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60).isActive = true
-        playButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
         playButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
-
-        downloadButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60).isActive = true
-        downloadButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
         downloadButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+
+        buttonsStackView.centerYAnchor.constraint(equalTo: bottomAnchor, constant: -50).isActive = true
+        buttonsStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        buttonsStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.75).isActive = true
     }
 
 }

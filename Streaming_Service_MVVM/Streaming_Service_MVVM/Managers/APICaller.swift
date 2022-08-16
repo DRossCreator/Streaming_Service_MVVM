@@ -49,7 +49,7 @@ class APICaller {
             }
             do {
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
-                print(results)
+                complition(.success(results.results))
             } catch {
                 complition(.failure(APIError.failedTogetData))
             }
@@ -67,7 +67,7 @@ class APICaller {
             }
             do {
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
-                print(results)
+                complition(.success(results.results))
             } catch {
                 complition(.failure(APIError.failedTogetData))
             }
@@ -76,7 +76,7 @@ class APICaller {
         task.resume()
     }
 
-    func getPopular(complition: @escaping (Result<[TrendingTitleResponse], Error>) -> Void) {
+    func getPopular(complition: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(Constants.basicURL)/3/movie/popular?api_key=\(Constants.API_KEY)&language=en-US&page=1") else { return }
 
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
@@ -85,7 +85,7 @@ class APICaller {
             }
             do {
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
-                print(results)
+                complition(.success(results.results))
             } catch {
                 complition(.failure(APIError.failedTogetData))
             }
