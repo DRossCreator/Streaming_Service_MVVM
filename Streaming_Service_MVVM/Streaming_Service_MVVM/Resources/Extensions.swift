@@ -5,4 +5,8 @@
 //  Created by Daniil Yarkovenko on 15.08.2022.
 //
 
-import Foundation
+import UIKit
+
+enum Metric {
+    static let moviePoster: CGFloat = 180
+}

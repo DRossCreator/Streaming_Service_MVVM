@@ -18,7 +18,7 @@ class CollectionViewTableViewCell: UITableViewCell {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: contentView.frame.width / 2.7, height: 160)
+        layout.itemSize = CGSize(width: contentView.frame.width / 2.7, height: Metric.moviePoster)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)

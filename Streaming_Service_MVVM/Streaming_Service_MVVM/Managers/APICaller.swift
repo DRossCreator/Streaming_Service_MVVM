@@ -76,7 +76,7 @@ class APICaller {
         task.resume()
     }
 
-    func getPopular(complition: @escaping (Result<[Title], Error>) -> Void) {
+    func getPopular(url: String, complition: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(Constants.basicURL)/3/movie/popular?api_key=\(Constants.API_KEY)&language=en-US&page=1") else { return }
 
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
